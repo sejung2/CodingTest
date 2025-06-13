@@ -1,35 +1,24 @@
 import java.util.*;
 
 class Solution {
-    public int[] solution(int[] numlist, int n) {
-        int[] dist = new int[numlist.length];
+    public List<Integer> solution(int[] numlist, int n) {
+        List<Integer> result = new ArrayList<>();
         for(int i = 0; i < numlist.length; i++){
-            dist[i] = Math.abs(numlist[i] - n);
+            result.add(numlist[i]);
         }
-        
-        for(int i = 0; i < numlist.length; i++){
-            for(int j = i; j < numlist.length; j++){
-                int temp;
-                int dtemp;
-                if(dist[i] > dist[j]){
-                    temp = numlist[j];
-                    numlist[j] = numlist[i];
-                    numlist[i] = temp;
-                    temp = dist[i];
-                    dist[i] = dist[j];
-                    dist[j] = temp;
-                } else if(dist[i] == dist[j]){
-                    if(numlist[i] < numlist[j]){
-                        temp = numlist[j];
-                        numlist[j] = numlist[i];
-                        numlist[i] = temp;
-                        temp = dist[i];
-                        dist[i] = dist[j];
-                        dist[j] = temp;
-                    }
+        result.sort(new Comparator<Integer>(){
+            @Override
+            public int compare(Integer a, Integer b){
+                int distA = Math.abs(a - n);
+                int distB = Math.abs(b - n);
+                
+                if(distA == distB){
+                    return b - a;
                 }
+                
+                return distA - distB;
             }
-        }
-        return numlist;
+        });
+        return result;
     }
 }
