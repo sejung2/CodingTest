@@ -3,8 +3,6 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
         if(root == null) return result;
 
-        ArrayDeque<List<Integer>> resultStack = new ArrayDeque<>();
-
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
@@ -20,13 +18,10 @@ class Solution {
                 if(current.left != null) queue.add(current.left);
                 if(current.right != null) queue.add(current.right);
             }
-            resultStack.add(currentLevel);
+            result.add(currentLevel);
         }
 
-        while(!resultStack.isEmpty()){
-            List<Integer> input = resultStack.pollLast();
-            result.add(input);
-        }
+        Collections.reverse(result);
         return result;
     }
 }
