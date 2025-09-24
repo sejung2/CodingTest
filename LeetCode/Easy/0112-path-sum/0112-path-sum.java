@@ -2,9 +2,8 @@ class Solution {
     public boolean hasPathSum(TreeNode root, int targetSum) {
         if(root == null) return false;
         if((root.val == targetSum) && (root.left == null && root.right == null)) return true;
-        targetSum -= root.val;
-        boolean left = sum(root.left, targetSum);
-        boolean right = sum(root.right, targetSum);
+        boolean left = sum(root.left, targetSum - root.val);
+        boolean right = sum(root.right, targetSum - root.val);
         return left || right;
     }
 
@@ -15,6 +14,7 @@ class Solution {
             if(root.left == null && root.right == null){
                 return true;
             }
+            return false;
         }
 
         boolean left = sum(root.left, target);
