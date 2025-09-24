@@ -14,7 +14,6 @@ class Solution {
             if(root.left == null && root.right == null){
                 return true;
             }
-            return false;
         }
 
         boolean left = sum(root.left, target);
