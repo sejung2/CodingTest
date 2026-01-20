@@ -12,6 +12,6 @@ class Solution {
             target.offer(a > b ? (a - b) : (b - a));
         }
 
-        return target.poll();
+        return target.size() == 0 ? 0 : target.poll();
     }
 }
