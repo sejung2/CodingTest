@@ -1,20 +1,19 @@
 class Solution {
-    int[] memo;
     public int climbStairs(int n) {
-        memo = new int[n + 1];
-        return solve(n);
-    }
+        if (n == 1) return 1;
+        if (n == 2) return 2;
 
-    public int solve(int n) {
-        if(n == 0) return 0;
-        if(n == 1) return 1;
-        if(n == 2) return 2;
+        int a = 1;
+        int b = 2;
+        int result = 0;
+        
+        for (int i = 3; i <= n; i++) {
+            result = a + b;
 
-        if(memo[n] != 0) {
-            return memo[n];
+            a = b;
+            b = result;
         }
 
-        memo[n] = solve(n - 1) + solve(n - 2);
-        return memo[n];
+        return result;
     }
 }
