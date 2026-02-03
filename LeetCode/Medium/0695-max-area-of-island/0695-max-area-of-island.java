@@ -23,11 +23,11 @@ class Solution {
 
     int dfs(int[][] grid, int x, int y) {
         int sum = 0;
-        if(x < 0 || y < 0 || x >= N || y >= M || grid[x][y] == 0 || grid[x][y] == 2) {
+        if(x < 0 || y < 0 || x >= N || y >= M || grid[x][y] != 1) {
             return 0;
         }
 
-        grid[x][y] = 2;
+        grid[x][y] = 0;
         sum++;
 
         for(int i = 0; i < 4; i++) {
